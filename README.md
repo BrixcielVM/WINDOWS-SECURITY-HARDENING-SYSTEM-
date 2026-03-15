@@ -54,11 +54,5 @@ El sistema ejecuta una matriz de hardening dividida en capas estratégicas:
     * `Escaneo rápido de Microsoft Defender`.
 5.  **Reinicio:** Es fundamental reiniciar el equipo para consolidar los cambios en el registro.
 
----
 
-## 🏗️ Compilación (Development)
-
-Si deseas auditar el código fuente o realizar tu propia build, el script utiliza el siguiente comando de compilación:
-
-```powershell
-Invoke-PS2EXE -inputFile ".\HardeningSystem.ps1" -outputFile ".\HardeningSystem.exe" -requireAdmin -title "Windows Security Hardening" -description "By Brixciel Vergara"
+   
