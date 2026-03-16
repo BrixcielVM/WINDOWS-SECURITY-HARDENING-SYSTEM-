@@ -68,24 +68,24 @@ foreach ($step in $steps) {
 # 4. Opciones Interactivas de Configuración Adicional
 #--------------------------------------------------
 Write-Host "`n--------------------------------------------------" -ForegroundColor Cyan
-Write-Host " OPCIONES ADICIONALES DE HARDENING" -ForegroundColor Yellow
+Write-Host " OPCIONES ADICIONALES DE HARDENING" -ForegroundColor Cyan
 
 $rdpChoice = Read-Host "¿Deseas desactivar RDP (Escritorio Remoto)? (S/N)"
 if ($rdpChoice -match "^[sSyY]$") {
-    Write-Host "[+] Desactivando RDP..." -ForegroundColor Yellow
+    Write-Host "[+] Desactivando RDP..." -ForegroundColor Green
     Set-ItemProperty "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 1
     Disable-NetFirewallRule -DisplayGroup "Remote Desktop" -ErrorAction SilentlyContinue
 }
 
 $ipv6Choice = Read-Host "¿Deseas desactivar IPv6 en todas las interfaces? (S/N)"
 if ($ipv6Choice -match "^[sSyY]$") {
-    Write-Host "[+] Desactivando IPv6 vía Registro..." -ForegroundColor Yellow
+    Write-Host "[+] Desactivando IPv6 vía Registro..." -ForegroundColor Green
     New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters" -Name "DisabledComponents" -PropertyType DWord -Value 255 -Force | Out-Null
 }
 
 $hypervChoice = Read-Host "¿Deseas desactivar Hyper-V? (S/N)"
 if ($hypervChoice -match "^[sSyY]$") {
-    Write-Host "[+] Desactivando características de Hyper-V..." -ForegroundColor Yellow
+    Write-Host "[+] Desactivando características de Hyper-V..." -ForegroundColor Green
     Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -NoRestart | Out-Null
 }
 
@@ -96,13 +96,13 @@ Write-Host "`n--------------------------------------------------" -ForegroundCol
 
 $sfcChoice = Read-Host "¿Deseas ejecutar SFC /scannow? (S/N)"
 if ($sfcChoice -match "^[sSyY]$") {
-    Write-Host "[+] Ejecutando SFC... (No cierres la ventana)" -ForegroundColor Yellow
+    Write-Host "[+] Ejecutando SFC... (No cierres la ventana)" -ForegroundColor Green
     sfc /scannow
 }
 
 $scanChoice = Read-Host "¿Deseas ejecutar un escaneo de Microsoft Defender? (S/N)"
 if ($scanChoice -match "^[sSyY]$") {
-    Write-Host "[+] Iniciando escaneo rápido..." -ForegroundColor Yellow
+    Write-Host "[+] Iniciando escaneo rápido..." -ForegroundColor Green
     Start-MpScan -ScanType QuickScan
 }
 
