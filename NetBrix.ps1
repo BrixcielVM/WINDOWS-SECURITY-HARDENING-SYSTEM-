@@ -2,7 +2,7 @@
 ====================================================
  WINDOWS SECURITY HARDENING SYSTEM
  Creado por Brixciel Vergara Morales
- Versión: Titanium / Enterprise Grade
+ 
 ====================================================
 #>
 
@@ -27,7 +27,6 @@ if (-not $admin.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 Write-Host "`n==================================================" -ForegroundColor Cyan
 Write-Host " WINDOWS SECURITY HARDENING SYSTEM" -ForegroundColor Cyan
 Write-Host " Desarrollado por: Brixciel Vergara Morales" -ForegroundColor Yellow
-Write-Host " Nivel: Extremo (Enterprise & Forensics)" -ForegroundColor Green
 Write-Host "==================================================`n" -ForegroundColor Cyan
 
 # Pequeña espera de 1 segundo
