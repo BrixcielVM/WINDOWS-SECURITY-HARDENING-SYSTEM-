@@ -71,7 +71,7 @@ Protección de Red: Filtrado activo contra dominios maliciosos y reputación de 
 7.  *`¿Deseas desactivar Hyper-V?  
 8.  *`SFC /scannow` (Reparación de archivos de sistema).
 9.  *`Escaneo rápido de Microsoft Defender`.
-10. *Reinicio:** Es fundamental reiniciar el equipo para consolidar los cambios en el registro.
+10. *Reinicio: ** Es fundamental reiniciar el equipo para consolidar los cambios en el registro.
 
 
    
