@@ -69,9 +69,9 @@ Protección de Red: Filtrado activo contra dominios maliciosos y reputación de 
 5.  *` Deseas desactivar RDP (Escritorio Remoto).
 6.  *` Deseas desactivar IPv6 en todas las interfaces
 7.  *`¿Deseas desactivar Hyper-V?  
-8.- *`SFC /scannow` (Reparación de archivos de sistema).
-9.- *`Escaneo rápido de Microsoft Defender`.
-10.-*Reinicio:** Es fundamental reiniciar el equipo para consolidar los cambios en el registro.
+8.  *`SFC /scannow` (Reparación de archivos de sistema).
+9.  *`Escaneo rápido de Microsoft Defender`.
+10. *Reinicio:** Es fundamental reiniciar el equipo para consolidar los cambios en el registro.
 
 
    
