@@ -65,7 +65,32 @@ foreach ($step in $steps) {
 }
 
 #--------------------------------------------------
-# 4. Preguntas de Escaneo (Única interacción)
+# 4. Opciones Interactivas de Configuración Adicional
+#--------------------------------------------------
+Write-Host "`n--------------------------------------------------" -ForegroundColor Cyan
+Write-Host " OPCIONES ADICIONALES DE HARDENING" -ForegroundColor Yellow
+
+$rdpChoice = Read-Host "¿Deseas desactivar RDP (Escritorio Remoto)? (S/N)"
+if ($rdpChoice -match "^[sSyY]$") {
+    Write-Host "[+] Desactivando RDP..." -ForegroundColor Yellow
+    Set-ItemProperty "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 1
+    Disable-NetFirewallRule -DisplayGroup "Remote Desktop" -ErrorAction SilentlyContinue
+}
+
+$ipv6Choice = Read-Host "¿Deseas desactivar IPv6 en todas las interfaces? (S/N)"
+if ($ipv6Choice -match "^[sSyY]$") {
+    Write-Host "[+] Desactivando IPv6 vía Registro..." -ForegroundColor Yellow
+    New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters" -Name "DisabledComponents" -PropertyType DWord -Value 255 -Force | Out-Null
+}
+
+$hypervChoice = Read-Host "¿Deseas desactivar Hyper-V? (S/N)"
+if ($hypervChoice -match "^[sSyY]$") {
+    Write-Host "[+] Desactivando características de Hyper-V..." -ForegroundColor Yellow
+    Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -NoRestart | Out-Null
+}
+
+#--------------------------------------------------
+# 5. Preguntas de Escaneo 
 #--------------------------------------------------
 Write-Host "`n--------------------------------------------------" -ForegroundColor Cyan
 
@@ -82,7 +107,7 @@ if ($scanChoice -match "^[sSyY]$") {
 }
 
 #--------------------------------------------------
-# 5. Finalización
+# 6. Finalización
 #--------------------------------------------------
 Write-Host "`n==================================================" -ForegroundColor Green
 Write-Host " HARDENING COMPLETADO CON ÉXITO"
